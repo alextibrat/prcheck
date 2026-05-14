@@ -1,0 +1,32 @@
+# prcheck configuration
+# Define rules that map changed file path patterns to PR labels and description templates.
+
+rules:
+  - pattern: 'src/**'
+    labels:
+      - frontend
+    template: '.github/pr_templates/frontend.md'
+    description: 'Changes to frontend source files'
+
+  - pattern: 'infra/**'
+    labels:
+      - infrastructure
+    template: '.github/pr_templates/infra.md'
+    description: 'Changes to infrastructure or deployment configs'
+
+  - pattern: 'docs/**'
+    labels:
+      - documentation
+    description: 'Documentation updates'
+
+  - pattern: '**/*.test.ts'
+    labels:
+      - tests
+    description: 'Test file changes'
+
+# Fallback labels applied when no rule matches
+default_labels:
+  - needs-review
+
+# Fallback template used when no rule-specific template matches
+default_template: '.github/pr_templates/default.md'
